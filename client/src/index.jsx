@@ -4,7 +4,7 @@ import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
 import DisplayRepoList from './components/DisplayRepoList.jsx';
-import Repo from './components/Repo.jsx';
+
 
 
 
@@ -23,7 +23,7 @@ class App extends React.Component {
     $.ajax({
       url: "/repos",
       method: "POST",
-      data: JSON.stringify({ursername: term}),
+      data: JSON.stringify({username: term}),
       dataType: 'json',
       contentType: 'application/json'
     })
