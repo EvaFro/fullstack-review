@@ -1,5 +1,6 @@
 const request = require('request');
 const config = require('../config.js');
+const save2DataBase = require('../database/index.js')
 
 let getReposByUsername = (username) => {
   // TODO - Use the request module to request repos for a specific
@@ -15,9 +16,13 @@ let getReposByUsername = (username) => {
     }
   };
 
-  request.get(options, (err, req, data)=>{
+  request.get(options, (err, res, getReposByUsernameepos)=>{
     console.log("Error API call: ", err);
-    console.log("Successful API call: ", data);
+    console.log("Successful API call: ", repos);
+    repos.forEach((repo) =>{
+      save2DataBase.save(repo);
+    })
+
   });
 
 }
