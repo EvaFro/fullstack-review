@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 let app = express();
-const getRepos = require('./helpers/github.js')
+const getRepos = require('../helpers/github.js')
 
 // parse the data to req.body
 app.use(bodyParser.json());
