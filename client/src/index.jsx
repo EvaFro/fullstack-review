@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      repos: []
+      repos: [{userName:'EvaFro',repoName: 'HelloWorld', starCount:'10', watchCount:'100', forkCount:'20', description:'First Repo'}]
     }
 
   }
@@ -34,7 +34,7 @@ class App extends React.Component {
       <h1>Github Fetcher</h1>
       <RepoList repos={this.state.repos}/>
       <Search onSearch={this.search.bind(this)}/>
-      <DisplayRepoList />
+      <DisplayRepoList repos={this.state.repos}/>
     </div>)
   }
 }
