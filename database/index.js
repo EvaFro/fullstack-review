@@ -1,16 +1,24 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
-  userName: string,
-  repoName: string,
-  description: string,
-  link: string, // might be mixed have to look into it
-  forkCount: number,
-  watchCount: number,
-  starCount: number
+  userName: { type: String, required: true },
+  repoName: { type: String, required: true, unique: true },
+  description: { type: String, required: true },
+  link: { type: String, required: true }, // might be mixed have to look into it
+  forkCount: { type: Number, required: true },
+  watchCount: { type: Number, required: true },
+  starCount: { type: Number, required: true }
 });
+
+repoSchema.plugin(uniqueValidator);
+
+// Need to figure out how to create a unique table - you add the table name 
+// to one part of the mongoose 
+// compous comunity
+
 
 let Repo = mongoose.model('Repo', repoSchema);
 
