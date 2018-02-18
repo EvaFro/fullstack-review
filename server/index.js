@@ -22,8 +22,9 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  	  dataBase.fetch();
 
+  	console.log("Fetching Data")
+		dataBase.fetch((data)=>{res.send(data)});
 });
 
 let port = 1128;
