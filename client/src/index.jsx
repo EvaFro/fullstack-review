@@ -17,6 +17,12 @@ class App extends React.Component {
 
   }
 
+  onFetch(data){
+    this.setState({
+      repos: data
+    })
+  }
+    
   search (term) {
     console.log(`${term} was searched`);
     // TODO
@@ -29,11 +35,23 @@ class App extends React.Component {
     })
   }
 
+  fetch () {
+    $.ajax({
+      url: "/repos",
+      method: "GET",
+      dataType: 'json',
+      contentType: 'application/json',
+      success: (data)=>{this.onFetch(data)},
+      error: () => {console.log("Invalid Fetch Requesst")}
+    })
+  }
+
+
   render () {
     return (<div>
       <h1>Github Fetcher</h1>
       <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
+      <Search onSearch={this.search.bind(this)} onFetch={this.fetch.bind(this)}/>
       <DisplayRepoList repos={this.state.repos}/>
     </div>)
   }
