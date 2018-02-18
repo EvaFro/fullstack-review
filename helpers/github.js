@@ -17,11 +17,14 @@ let getReposByUsername = (username) => {
   };
 
   request.get(options, (err, res, repos)=>{
-    console.log("Error API call: ", err);
-    console.log("Successful API call: ", repos);
-    repos = JSON.parse(repos);
-    for(var i=0; i<repos.length;i++){
-      save2DataBase.save(repos[i]);
+    if(err){
+      console.log("Error API call: ", err);
+    } else {
+      console.log("Successful API call");
+      repos = JSON.parse(repos);
+      for(var i=0; i<repos.length;i++){
+        save2DataBase.save(repos[i]);
+      }
     }
   });
 
