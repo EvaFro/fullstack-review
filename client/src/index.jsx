@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      repos: [{userName:'EvaFro',repoName: 'HelloWorld', starCount:'10', watchCount:'100', forkCount:'20', description:'First Repo'}]
+      repos: []
     }
 
   }
