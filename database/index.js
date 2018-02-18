@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+// const uniqueValidator = require('mongoose-unique-validator');
 mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
@@ -13,11 +13,11 @@ let repoSchema = mongoose.Schema({
   starCount: { type: Number, required: true }
 });
 
-repoSchema.plugin(uniqueValidator);
+// repoSchema.plugin(uniqueValidator);
 
 // Need to figure out how to create a unique table - you add the table name 
 // to one part of the mongoose 
-// compous comunity
+// compous comunity 
 
 
 let Repo = mongoose.model('Repo', repoSchema);
